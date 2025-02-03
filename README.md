@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+### Endpoints
 
-## Getting Started
+**ดึงข้อมูลสินค้าชิ้นเดียว**
+Method: GET
+URL: `base_url`/product/{id}
 
-First, run the development server:
+**ดึงข้อมูลสินค้าทั้งหมด**
+Method: GET
+URL: `base_url`/products
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+**สร้างข้อมูลสินค้า**
+Method: POST
+URL: `base_url`/products
+Body (JSON):
+```json
+{
+  "name": "Empty Crate",
+  "description": "description",
+  "thumbnailUrl": "/thumbnail.jpeg",
+  "price": 9.99,
+  "quantity": 10
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**แก้ไขข้อมูลสินค้า**
+Method: PUT
+URL: `base_url`/product/{id}
+Body (JSON):
+```json
+{
+  "id": 4,
+  "name": "Empty Crate Pro Max",
+  "price": 19.99,
+  "quantity": 5
+}
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**ลบสินค้า**
+Method: DELETE
+URL: `base_url`/product/{id}
+Body (JSON):
+```json
+{
+  "id": 3
+}
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**ซื้อสินค้า**
+Method: POST
+URL: `base_url`/product/{id}/buy
+Body (JSON):
+```json
+{
+  "id": 4,
+  "quantity": 1
+}
+```
