@@ -9,7 +9,6 @@ export default function UserLayout({
         <nav>
           <ul>
             <li>Home</li>
-            <li>Store</li>
           </ul>
         </nav>
       </header>

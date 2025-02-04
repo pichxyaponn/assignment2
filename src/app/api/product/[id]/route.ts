@@ -71,7 +71,9 @@ export async function PUT(
       await request.json();
 
     if (Number(paramsId) !== id)
-      return new Response(JSON.stringify("Mismatched id"), { status: 400 });
+      return new Response(JSON.stringify("Mismatched id " + paramsId + id), {
+        status: 400,
+      });
 
     const updatedProduct = await prisma.product.update({
       where: {
