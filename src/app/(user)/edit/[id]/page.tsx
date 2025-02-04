@@ -1,7 +1,6 @@
 "use client";
 
 import React, { use, useEffect, useState } from "react";
-import axios from "axios";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
@@ -40,13 +39,19 @@ export default function Edit({ params }: { params: Promise<{ id: string }> }) {
     e.preventDefault();
 
     try {
-      await axios.put(`/api/product/${id}`, {
-        id: parseInt(id),
-        name,
-        description,
-        thumbnailUrl,
-        price,
-        quantity,
+      await fetch(`/api/product/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: parseInt(id),
+          name,
+          description,
+          thumbnailUrl,
+          price,
+          quantity,
+        }),
       });
       router.push("/");
       alert("Product updated successfully");
